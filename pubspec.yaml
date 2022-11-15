@@ -1,7 +1,7 @@
 name: osm_flutter_hooks
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: package extension to support manage state with osm_flutter
+version: 1.0.0
+homepage: https://github.com/liodali/osm_flutter_hooks
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.18.5+1
-  flutter_osm_plugin: 0.40.3+2
+  flutter_osm_plugin: ^0.40.3+2
 
 
 dev_dependencies:
