@@ -26,8 +26,9 @@ class _MapControllerHookState
   void initHook() {
     super.initHook();
     _controller = MapController(
-      initPosition: GeoPoint(latitude: 0.0, longitude: 0.0),
-      initMapWithUserPosition: true,
+      initMapWithUserPosition: hook.initMapWithUserPosition,
+      initPosition: hook.initPosition,
+      areaLimit: hook.areaLimit,
     );
   }
 
