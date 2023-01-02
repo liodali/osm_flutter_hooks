@@ -15,10 +15,11 @@ void useMapIsReady({
 }
 
 MapController useMapController({
-  bool initMapWithUserPosition = true,
+  bool initMapWithUserPosition = false,
   GeoPoint? initPosition,
   BoundingBox? areaLimit = const BoundingBox.world(),
 }) {
+  assert(initMapWithUserPosition ^ (initPosition != null));
   return use(
     MapControllerHook(
       initMapWithUserPosition: initMapWithUserPosition,
