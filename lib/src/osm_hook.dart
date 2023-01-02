@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
-
+/// [MapControllerHook]
+/// 
+/// this controller hook is to illustrate statefull widget for hooks
+/// where the [MapController] will be initialized
 class MapControllerHook extends Hook<MapController> {
   final bool initMapWithUserPosition;
   final GeoPoint? initPosition;
@@ -44,7 +47,10 @@ class _MapControllerHookState
 }
 
 typedef MapIsReady = Function();
-
+/// [MapIsReadyHook]
+/// 
+/// this hook is to replace MapIsReady for hook state
+/// where you can put your logic after the map is ready to use
 class MapIsReadyHook extends Hook<MapIsReady> {
   final MapIsReady mapIsReady;
   final MapController controller;

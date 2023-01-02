@@ -2,6 +2,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:osm_flutter_hooks/src/osm_hook.dart';
 
+/// [useMapIsReady]
+/// 
+/// the function will call [MapIsReadyHook]
 void useMapIsReady({
   required MapController controller,
   required Function() mapIsReady,
@@ -14,6 +17,10 @@ void useMapIsReady({
   );
 }
 
+/// [useMapController]
+/// 
+/// the function will call [MapControllerHook] to initialize [MapController]
+/// return [MapController] that will passe  to [OSMFlutter]
 MapController useMapController({
   bool initMapWithUserPosition = false,
   GeoPoint? initPosition,
