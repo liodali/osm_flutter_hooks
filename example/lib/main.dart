@@ -51,7 +51,9 @@ class SimpleOSM extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useMapController(initMapWithUserPosition: true);
+    final controller = useMapController(
+      initMapWithUserPosition: true
+    );
     useMapIsReady(
       controller: controller,
       mapIsReady: () async {
@@ -60,6 +62,7 @@ class SimpleOSM extends HookWidget {
     );
     return OSMFlutter(
       controller: controller,
+      initZoom: 10,
       markerOption: MarkerOption(
         defaultMarker: const MarkerIcon(
           icon: Icon(
@@ -69,7 +72,7 @@ class SimpleOSM extends HookWidget {
           ),
         ),
       ),
-      trackMyPosition: false,
+      trackMyPosition: true,
     );
   }
 }
