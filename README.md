@@ -1,5 +1,5 @@
 ## OSM_FLUTTER_HOOKS
-![pub](https://img.shields.io/badge/pub-v1.1.1-blue) 
+![pub](https://img.shields.io/badge/pub-v1.2.0-blue) 
 
 ## Features
 
