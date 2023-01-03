@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
+
 /// [MapControllerHook]
-/// 
+///
 /// this controller hook is to illustrate statefull widget for hooks
 /// where the [MapController] will be initialized
 class MapControllerHook extends Hook<MapController> {
   final bool initMapWithUserPosition;
   final GeoPoint? initPosition;
   final BoundingBox? areaLimit;
-
-  const MapControllerHook({
-    this.initMapWithUserPosition = false,
-    this.initPosition,
-    this.areaLimit,
-  });
+  final CustomTile? tile;
+  const MapControllerHook(
+      {this.initMapWithUserPosition = false,
+      this.initPosition,
+      this.areaLimit,
+      this.tile});
 
   @override
   HookState<MapController, Hook<MapController>> createState() =>
@@ -28,11 +29,20 @@ class _MapControllerHookState
   @override
   void initHook() {
     super.initHook();
-    _controller = MapController(
-      initMapWithUserPosition: hook.initMapWithUserPosition,
-      initPosition: hook.initPosition,
-      areaLimit: hook.areaLimit,
-    );
+    if (hook.tile == null) {
+      _controller = MapController(
+        initMapWithUserPosition: hook.initMapWithUserPosition,
+        initPosition: hook.initPosition,
+        areaLimit: hook.areaLimit,
+      );
+    } else if (hook.tile != null) {
+      _controller = MapController.customLayer(
+        initMapWithUserPosition: hook.initMapWithUserPosition,
+        initPosition: hook.initPosition,
+        areaLimit: hook.areaLimit,
+        customTile: hook.tile!,
+      );
+    }
   }
 
   @override
@@ -47,8 +57,9 @@ class _MapControllerHookState
 }
 
 typedef MapIsReady = Function();
+
 /// [MapIsReadyHook]
-/// 
+///
 /// this hook is to replace MapIsReady for hook state
 /// where you can put your logic after the map is ready to use
 class MapIsReadyHook extends Hook<MapIsReady> {
