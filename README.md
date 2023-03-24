@@ -1,5 +1,5 @@
 ## OSM_FLUTTER_HOOKS
-![pub](https://img.shields.io/badge/pub-v1.2.0-blue) 
+![pub](https://img.shields.io/badge/pub-v1.3.0-blue) 
 
 ## Features
 
@@ -32,6 +32,11 @@ class SimpleOSM extends HookWidget {
         await controller.setZoom(zoomLevel: 15);
       },
     );
+    useMapListener(
+        controller: controller,
+        onSingleTap: (p) async {
+          await controller.addMarker(p);
+        });
     return OSMFlutter(
       controller: controller,
       markerOption: MarkerOption(
