@@ -99,3 +99,77 @@ class _MapIsReadyHookState extends HookState<MapIsReady, MapIsReadyHook>
     if (isReady) hook.mapIsReady();
   }
 }
+
+/// [MapListenerHook]
+///
+/// this controller hook is to illustrate statefull widget for hooks
+/// where the [MapController] will be initialized
+class MapListenerHook extends Hook<void> {
+  final MapController controller;
+  final Function(GeoPoint)? onSingleTap;
+  final Function(GeoPoint)? onLongTap;
+  final Function(Region)? onRegionChanged;
+  final Function(RoadInfo)? onRoadTap;
+  const MapListenerHook({
+    required this.controller,
+    this.onSingleTap,
+    this.onLongTap,
+    this.onRegionChanged,
+    this.onRoadTap,
+  });
+
+  @override
+  HookState<void, Hook<void>> createState() => _MapListenerHookState();
+}
+
+class _MapListenerHookState extends HookState<void, MapListenerHook>
+    with OSMMixinObserver {
+  @override
+  void initHook() {
+    super.initHook();
+    hook.controller.addObserver(this);
+  }
+
+  @override
+  void build(BuildContext context) {}
+
+  @override
+  void dispose() {
+    hook.controller.removeObserver(this);
+  }
+
+  @override
+  Future<void> mapIsReady(bool isReady) async {}
+
+  @override
+  void onSingleTap(GeoPoint position) async {
+    super.onSingleTap(position);
+    if (hook.onSingleTap != null) {
+      await hook.onSingleTap!(position);
+    }
+  }
+
+  @override
+  void onLongTap(GeoPoint position) {
+    super.onLongTap(position);
+    if (hook.onLongTap != null) {
+      hook.onLongTap!(position);
+    }
+  }
+
+  @override
+  void onRegionChanged(Region region) {
+    super.onRegionChanged(region);
+    if (hook.onRegionChanged != null) {
+      hook.onRegionChanged!(region);
+    }
+  }
+
+  @override
+  void onRoadTap(RoadInfo road) {
+    super.onRoadTap(road);
+    if (hook.onRoadTap != null) {
+      hook.onRoadTap!(road);
+    }
+  }
+}

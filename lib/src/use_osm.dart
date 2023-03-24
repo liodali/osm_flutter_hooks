@@ -37,3 +37,24 @@ MapController useMapController({
     ),
   );
 }
+
+/// [useMapListener]
+///
+/// this hook to provide map callbacks for get single tap or,region changed,etc..
+void useMapListener({
+  required MapController controller,
+  Function(GeoPoint)? onSingleTap,
+  Function(GeoPoint)? onLongTap,
+  Function(Region)? onRegionChanged,
+  Function(RoadInfo)? onRoadTap,
+}) {
+  return use(
+    MapListenerHook(
+      controller: controller,
+      onSingleTap: onSingleTap,
+      onLongTap: onLongTap,
+      onRegionChanged: onRegionChanged,
+      onRoadTap: onRoadTap,
+    ),
+  );
+}
