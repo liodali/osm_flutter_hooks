@@ -22,15 +22,15 @@ void useMapIsReady({
 /// the function will call [MapControllerHook] to initialize [MapController]
 /// return [MapController] that will passe  to [OSMFlutter]
 MapController useMapController({
-  bool initMapWithUserPosition = false,
+  UserTrackingOption? userTrackingOption,
   GeoPoint? initPosition,
   BoundingBox? areaLimit = const BoundingBox.world(),
   CustomTile? tile,
 }) {
-  assert(initMapWithUserPosition ^ (initPosition != null));
+  assert((userTrackingOption != null) ^ (initPosition != null));
   return use(
     MapControllerHook(
-      initMapWithUserPosition: initMapWithUserPosition,
+      userTrackingOption: userTrackingOption,
       initPosition: initPosition,
       areaLimit: areaLimit,
       tile: tile,

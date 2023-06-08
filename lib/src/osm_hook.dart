@@ -7,15 +7,16 @@ import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 /// this controller hook is to illustrate statefull widget for hooks
 /// where the [MapController] will be initialized
 class MapControllerHook extends Hook<MapController> {
-  final bool initMapWithUserPosition;
+  final UserTrackingOption? userTrackingOption;
   final GeoPoint? initPosition;
   final BoundingBox? areaLimit;
   final CustomTile? tile;
-  const MapControllerHook(
-      {this.initMapWithUserPosition = false,
-      this.initPosition,
-      this.areaLimit,
-      this.tile});
+  const MapControllerHook({
+    this.userTrackingOption,
+    this.initPosition,
+    this.areaLimit,
+    this.tile,
+  });
 
   @override
   HookState<MapController, Hook<MapController>> createState() =>
@@ -31,13 +32,13 @@ class _MapControllerHookState
     super.initHook();
     if (hook.tile == null) {
       _controller = MapController(
-        initMapWithUserPosition: hook.initMapWithUserPosition,
+        initMapWithUserPosition: hook.userTrackingOption,
         initPosition: hook.initPosition,
         areaLimit: hook.areaLimit,
       );
     } else if (hook.tile != null) {
       _controller = MapController.customLayer(
-        initMapWithUserPosition: hook.initMapWithUserPosition,
+        initMapWithUserPosition: hook.userTrackingOption,
         initPosition: hook.initPosition,
         areaLimit: hook.areaLimit,
         customTile: hook.tile!,
