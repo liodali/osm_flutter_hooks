@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'OSM Demo'),
     );
   }
 }
@@ -51,7 +51,12 @@ class SimpleOSM extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useMapController(initMapWithUserPosition: true);
+    final controller = useMapController(
+      userTrackingOption: const UserTrackingOption(
+        enableTracking: true,
+        unFollowUser: true,
+      ),
+    );
     useMapIsReady(
       controller: controller,
       mapIsReady: () async {
@@ -87,7 +92,6 @@ class SimpleOSM extends HookWidget {
           icon: Icon(Icons.person),
         ),
       ),
-      trackMyPosition: true,
     );
   }
 }

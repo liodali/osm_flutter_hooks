@@ -1,5 +1,5 @@
 ## OSM_FLUTTER_HOOKS
-![pub](https://img.shields.io/badge/pub-v1.3.0-blue) 
+![pub](https://img.shields.io/badge/pub-v1.4.0-blue) 
 
 ## Features
 
@@ -25,7 +25,7 @@ add this line in you pubspec
 class SimpleOSM extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final controller = useMapController(initMapWithUserPosition: true);
+    final controller = useMapController(initMapWithUserPosition: const UserTrackingOption());
     useMapIsReady(
       controller: controller,
       mapIsReady: () async {
