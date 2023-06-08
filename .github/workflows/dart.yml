@@ -1,15 +1,23 @@
 name: osm_flutter_hooks
-on: [ push, pull_request ]
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
 
 jobs:
-  build:
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+  publish:
     runs-on: ubuntu-latest
     container:
       image:  google/dart:latest
     steps:
       - name: export tag
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: preparation
+        run:  sudo apt-get install unzip
       - name: preparation Dart
         uses: dart-lang/setup-dart@v1
       - name: Install Flutter SDK
