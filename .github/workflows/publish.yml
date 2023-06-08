@@ -23,7 +23,7 @@ jobs:
       - run: dart --version
       - run: flutter --version
       - name: Publish package
-        run: flutter pub publish -f
+        run: ls && flutter pub publish -f
       - name: release version
         uses: ncipollo/release-action@v1
         with:
