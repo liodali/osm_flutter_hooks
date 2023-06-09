@@ -22,8 +22,8 @@ jobs:
         uses: britannio/action-install-flutter@v1
       - run: dart --version
       - run: flutter --version
-      - name: check location
-        run: ls
+      - name: fomarting files
+        run : dart format .
       - name: Publish package
         run: flutter pub publish -f
       - name: release version
