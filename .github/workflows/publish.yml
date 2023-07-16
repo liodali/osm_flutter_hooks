@@ -6,7 +6,7 @@ on:
 
 permissions:
   id-token: write # This is required for requesting the JWT
-  contents: read  # This is required for actions/checkout
+  contents: write  # This is required for actions/checkout
 
 jobs:
   publish:
@@ -14,6 +14,7 @@ jobs:
     container:
       image:  python:3
     steps:
+      - uses: actions/checkout@v3
       - name: export tag
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: preparation Dart
