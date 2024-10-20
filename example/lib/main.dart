@@ -70,26 +70,21 @@ class SimpleOSM extends HookWidget {
         });
     return OSMFlutter(
       controller: controller,
-      initZoom: 10,
-      markerOption: MarkerOption(
-        defaultMarker: const MarkerIcon(
-          icon: Icon(
-            Icons.person_pin_circle,
-            color: Colors.blue,
-            size: 56,
-          ),
+      osmOption: OSMOption(
+        zoomOption: const ZoomOption(
+          initZoom: 10,
         ),
-      ),
-      userLocationMarker: UserLocationMaker(
-        personMarker: const MarkerIcon(
-          icon: Icon(
-            Icons.person,
-            size: 48,
-            color: Colors.red,
+        userLocationMarker: UserLocationMaker(
+          personMarker: const MarkerIcon(
+            icon: Icon(
+              Icons.person,
+              size: 48,
+              color: Colors.red,
+            ),
           ),
-        ),
-        directionArrowMarker: const MarkerIcon(
-          icon: Icon(Icons.person),
+          directionArrowMarker: const MarkerIcon(
+            icon: Icon(Icons.person),
+          ),
         ),
       ),
     );

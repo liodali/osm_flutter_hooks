@@ -31,7 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.18.5+1
+  flutter_hooks: '>=0.20.5'
   flutter_osm_plugin: ">=0.54.2"
   osm_flutter_hooks:
       path: ../

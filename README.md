@@ -1,5 +1,5 @@
 ## OSM_FLUTTER_HOOKS
-![pub](https://img.shields.io/badge/pub-v1.4.0-blue) 
+![pub](https://img.shields.io/badge/pub-v1.4.1-blue) 
 
 ## Features
 
@@ -39,16 +39,6 @@ class SimpleOSM extends HookWidget {
         });
     return OSMFlutter(
       controller: controller,
-      markerOption: MarkerOption(
-        defaultMarker: MarkerIcon(
-          icon: Icon(
-            Icons.person_pin_circle,
-            color: Colors.blue,
-            size: 56,
-          ),
-        ),
-      ),
-      trackMyPosition: false,
     );
   }
 }
