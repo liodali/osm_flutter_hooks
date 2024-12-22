@@ -93,11 +93,10 @@ class _MapIsReadyHookState extends HookState<MapIsReady, MapIsReadyHook>
   }
 
   @override
-  void dispose() {}
-
-  @override
   Future<void> mapIsReady(bool isReady) async {
-    if (isReady) hook.mapIsReady();
+    if (isReady) {
+      hook.mapIsReady();
+    }
   }
 }
 
